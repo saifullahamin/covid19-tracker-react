@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 1000,
     margin: "0 auto",
-    marginTop: 100,
+    marginTop: 70,
   },
   paper1: {
     padding: theme.spacing(2),
@@ -84,6 +84,7 @@ export default function InfoPanel({ data }) {
             Infected
             <br /> <br />
             <CountUp
+              className={classes.num}
               start={0}
               end={data.confirmed}
               duration={0.8}
@@ -100,6 +101,7 @@ export default function InfoPanel({ data }) {
             Recovered
             <br /> <br />
             <CountUp
+              className={classes.num}
               start={0}
               end={data.recovered}
               duration={0.8}
@@ -115,7 +117,13 @@ export default function InfoPanel({ data }) {
           <Paper className={classes.paper3} elevation={3}>
             Deaths
             <br /> <br />
-            <CountUp start={0} end={data.deaths} duration={0.8} separator="," />
+            <CountUp
+              className={classes.num}
+              start={0}
+              end={data.deaths}
+              duration={0.8}
+              separator=","
+            />
             <br />
             <p className={classes.date}>
               Updated on {new Date(data.lastUpdate).toDateString()}

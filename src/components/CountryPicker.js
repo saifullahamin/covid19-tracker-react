@@ -34,10 +34,10 @@ const CountriesPicker = ({ handleCountryChange }) => {
 
   return (
     <Grid container justify="center" className={classes.container}>
-      <Grid item xs={12} md={6} className={classes.heading}>
+      <Grid item xs={6} md={6} className={classes.heading}>
         COVID-19 Tracker
       </Grid>
-      <Grid item xs={12} md={6} className={classes.alignment}>
+      <Grid item xs={6} md={6} className={classes.alignment}>
         <FormControl variant="outlined" className={classes.formControl}>
           <NativeSelect
             defaultValue=""

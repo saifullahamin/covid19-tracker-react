@@ -41,7 +41,7 @@ const CountriesPicker = ({ handleCountryChange }) => {
   return (
     <Grid>
       <Grid className={classes.container}>
-        <Grid container className={classes.inside} spacing={8}>
+        <Grid container className={classes.inside} spacing={3}>
           <Grid item xs={12} md={6} className={classes.heading}>
             COVID-19 Tracker
           </Grid>

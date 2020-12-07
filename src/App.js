@@ -17,7 +17,7 @@ function App() {
 
   const handleCountryChange = async (country) => {
     let fetchedData;
-    if (country === "global") {
+    if (country === "Global") {
       fetchedData = await fetchData();
     } else {
       fetchedData = await fetchData(country);

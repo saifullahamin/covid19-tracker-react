@@ -6,9 +6,9 @@ import CountUp from "react-countup";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 1000,
+    maxWidth: "60%",
     margin: "0 auto",
-    marginTop: 70,
+    marginTop: 50,
   },
   paper1: {
     padding: theme.spacing(2),
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   paper2: {
     padding: theme.spacing(2),
     textAlign: "center",
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.secondary,  
     borderBottom: "5px solid rgba(51, 204, 51, 0.7)",
     paddingTop: 40,
     paddingBottom: 25,
@@ -53,23 +53,29 @@ export default function InfoPanel({ data }) {
   if (Object.keys(data).length === 0) {
     return (
       <div className={classes.root}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={4}>
+        <Grid container spacing={4}>
+          <Grid item xs={12} sm={12} lg={4}>
             <Paper className={classes.paper1} elevation={3}>
               Infected
-              <br /> <br />0
+              <br /> <br />
+              <span className={classes.num}>0</span>
+              <p className={classes.date}>-</p>
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={12} lg={4}>
             <Paper className={classes.paper2} elevation={3}>
               Recovered
-              <br /> <br />0
+              <br /> <br />
+              <span className={classes.num}>0</span>
+              <p className={classes.date}>-</p>
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={12} lg={4}>
             <Paper className={classes.paper3} elevation={3}>
               Deaths
-              <br /> <br />0
+              <br /> <br />
+              <span className={classes.num}>0</span>
+              <p className={classes.date}>-</p>
             </Paper>
           </Grid>
         </Grid>
@@ -78,8 +84,8 @@ export default function InfoPanel({ data }) {
   }
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={4}>
+      <Grid container spacing={4}>
+        <Grid item xs={12} sm={12} lg={4}>
           <Paper className={classes.paper1} elevation={3}>
             Infected
             <br /> <br />
@@ -96,7 +102,7 @@ export default function InfoPanel({ data }) {
             </p>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={12} lg={4}>
           <Paper className={classes.paper2} elevation={3}>
             Recovered
             <br /> <br />
@@ -113,7 +119,7 @@ export default function InfoPanel({ data }) {
             </p>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={12} lg={4}>
           <Paper className={classes.paper3} elevation={3}>
             Deaths
             <br /> <br />

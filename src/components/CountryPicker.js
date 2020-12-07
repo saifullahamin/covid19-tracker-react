@@ -4,9 +4,8 @@ import { fetchCountries } from "../api";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  formControl: {},
-  alignment: {
-    textAlign: "right",
+  inside: {
+    textAlign: "center",
   },
   container: {
     backgroundColor: "rgb(235, 235, 224)",
@@ -14,16 +13,23 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px 5px rgb(245, 245, 239)",
   },
   heading: {
-    marginTop: 6,
+    marginTop: 4,
     fontWeight: 900,
     fontSize: 22,
-    paddingLeft: 10,
+  },
+  current: {
+    textAlign: "center",
+    marginTop: 50,
+    fontWeight: "bold",
+    fontSize: 30,
+    opacity: 0.7,
   },
 }));
 
 const CountriesPicker = ({ handleCountryChange }) => {
   const [fetchedCountries, setFetchedCountries] = useState([]);
   const classes = useStyles();
+  const [selectedCountry, setCountry] = useState("Global");
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -33,24 +39,34 @@ const CountriesPicker = ({ handleCountryChange }) => {
   }, []);
 
   return (
-    <Grid container justify="center" className={classes.container}>
-      <Grid item xs={6} md={6} className={classes.heading}>
-        COVID-19 Tracker
+    <Grid>
+      <Grid className={classes.container}>
+        <Grid container className={classes.inside} spacing={8}>
+          <Grid item xs={12} md={6} className={classes.heading}>
+            COVID-19 Tracker
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <FormControl variant="outlined" className={classes.formControl}>
+              <NativeSelect
+                defaultValue=""
+                onChange={(e) => {
+                  handleCountryChange(e.target.value);
+                  setCountry(e.target.value);
+                }}
+              >
+                <option value="Global">Global</option>
+                {fetchedCountries.map((country, i) => (
+                  <option key={i} value={country}>
+                    {country}
+                  </option>
+                ))}
+              </NativeSelect>
+            </FormControl>
+          </Grid>
+        </Grid>
       </Grid>
-      <Grid item xs={6} md={6} className={classes.alignment}>
-        <FormControl variant="outlined" className={classes.formControl}>
-          <NativeSelect
-            defaultValue=""
-            onChange={(e) => handleCountryChange(e.target.value)}
-          >
-            <option value="global">Global</option>
-            {fetchedCountries.map((country, i) => (
-              <option key={i} value={country}>
-                {country}
-              </option>
-            ))}
-          </NativeSelect>
-        </FormControl>
+      <Grid className={classes.current}>
+        <Grid>{selectedCountry}</Grid>
       </Grid>
     </Grid>
   );

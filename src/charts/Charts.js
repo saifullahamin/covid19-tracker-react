@@ -1,20 +1,50 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Bar } from "react-chartjs-2";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    paddingTop: 100,
+    maxWidth: "80%",
+    margin: "0 auto",
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+    boxShadow: "-1px 3px 8px 0px rgba(0,0,0,0.3)",
+  },
+}));
 
 export default function Charts({ data }) {
+  const classes = useStyles();
+
   if (Object.keys(data).length === 0) {
     return (
-      <div>
-        <Doughnut data={{}} height={400} />
-        <Bar
-          data={{}}
-          width={500}
-          height={400}
-          options={{
-            maintainAspectRatio: false,
-          }}
-        />
+      <div className={classes.root}>
+        <Grid container spacing={6}>
+          <Grid item xs={12} sm={12} lg={6}>
+            <Paper className={classes.paper}>
+              <Doughnut data={{}} height={127} />
+            </Paper>
+          </Grid>
+          <Grid item xs={12} sm={12} lg={6}>
+            <Paper className={classes.paper}>
+              <Bar
+                data={{}}
+                width={400}
+                height={300}
+                options={{
+                  maintainAspectRatio: false,
+                }}
+              />
+            </Paper>
+          </Grid>
+        </Grid>
       </div>
     );
   }
@@ -53,21 +83,26 @@ export default function Charts({ data }) {
   };
 
   return (
-    <div className="charts">
-      <div>
-        <Doughnut data={data1} height={400} />
-      </div>
-      <div>
-        <Bar
-          className="bar"
-          data={data2}
-          width={500}
-          height={400}
-          options={{
-            maintainAspectRatio: false,
-          }}
-        />
-      </div>
+    <div className={classes.root}>
+      <Grid container spacing={6}>
+        <Grid item xs={12} sm={12} lg={6}>
+          <Paper className={classes.paper}>
+            <Doughnut data={data1} height={127} />
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={12} lg={6}>
+          <Paper className={classes.paper}>
+            <Bar
+              data={data2}
+              width={400}
+              height={300}
+              options={{
+                maintainAspectRatio: false,
+              }}
+            />
+          </Paper>
+        </Grid>
+      </Grid>
     </div>
   );
 }

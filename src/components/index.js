@@ -1,2 +1,2 @@
-export {default as InfoPanel} from "./InfoPanel";
-export {default as CountryPicker} from "./CountryPicker";
+export { default as InfoPanel } from "./InfoPanel";
+export { default as CountryPicker } from "./CountryPicker";

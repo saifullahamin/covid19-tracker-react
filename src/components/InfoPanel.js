@@ -92,7 +92,7 @@ export default function InfoPanel({ data }) {
             <CountUp
               className={classes.num}
               start={0}
-              end={data.confirmed}
+              end={Number(data.confirmed)}
               duration={0.8}
               separator=","
             />
@@ -109,7 +109,7 @@ export default function InfoPanel({ data }) {
             <CountUp
               className={classes.num}
               start={0}
-              end={data.recovered}
+              end={Number(data.recovered)}
               duration={0.8}
               separator=","
             />
@@ -126,7 +126,7 @@ export default function InfoPanel({ data }) {
             <CountUp
               className={classes.num}
               start={0}
-              end={data.deaths}
+              end={Number(data.deaths)}
               duration={0.8}
               separator=","
             />

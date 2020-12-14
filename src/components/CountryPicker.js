@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { NativeSelect, FormControl, Grid } from "@material-ui/core";
-import { fetchCountries } from "../api";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,17 +25,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CountriesPicker = ({ handleCountryChange }) => {
-  const [fetchedCountries, setFetchedCountries] = useState([]);
+const CountriesPicker = ({ handleCountryChange, countries }) => {
   const classes = useStyles();
-  const [selectedCountry, setCountry] = useState("Global");
-
-  useEffect(() => {
-    const fetchApi = async () => {
-      setFetchedCountries(await fetchCountries());
-    };
-    fetchApi();
-  }, []);
+  const [selectedCountry, setCountry] = useState("GLOBAL");
 
   return (
     <Grid>
@@ -54,8 +45,8 @@ const CountriesPicker = ({ handleCountryChange }) => {
                   setCountry(e.target.value);
                 }}
               >
-                <option value="Global">Global</option>
-                {fetchedCountries.map((country, i) => (
+                <option value="GLOBAL">Global</option>
+                {countries.map((country, i) => (
                   <option key={i} value={country}>
                     {country}
                   </option>
